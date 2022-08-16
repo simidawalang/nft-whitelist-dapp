@@ -1,13 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Montserrat:wght@300&display=swap');
+
+@import "./utils";
+@import "./layout";
+
+@import "../components/Button/button";
+@import "../components/Carousel/carousel";
+
+@import "./pages/home";
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-
-@import "../components/Carousel/carousel";
+body {
+  color: $white;
+  font-family: $Montserrat;
+}
 
 // @media (prefers-color-scheme: dark) {
 //   html {

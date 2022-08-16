@@ -1,3 +1,17 @@
-main {
-    color: red;
+.image-carousel { 
+    position: relative;
+    transform-style: preserve-3d;
+  .glass-card {
+    width: 400px;
+    height: 500px;
+    background: rgba($white, 0.1);
+    box-shadow: 10px 10px 40px rgba($white, 0.5);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid rgba($white, 0.5);
+    border-left: 1px solid rgba($white, 0.5);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+  }
 }

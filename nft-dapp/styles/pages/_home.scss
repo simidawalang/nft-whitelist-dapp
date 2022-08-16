@@ -1,0 +1,30 @@
+.homepage {
+    background-color: $dark-blue;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+    align-items: center;
+    @media #{ $medium-up } {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    &-header {
+        height: 100vh;
+    }
+
+    & .intro {
+        & .btn {
+            margin-top: 3rem;
+        }
+    }
+    & .brand-text {
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+        font-family: $Aboreto;
+        font-size: 4rem;
+        @media #{ $medium-up} {
+            font-size: 6rem;
+            letter-spacing: 3.5px;
+        }
+    }
+}

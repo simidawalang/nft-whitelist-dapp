@@ -1,0 +1,16 @@
+.btn {
+    border-radius: 4px;
+    background: linear-gradient(to bottom left, $blue, $peach);
+    position: relative;
+    text-transform: uppercase;
+    color: $white;
+    padding: 8px 12px;
+    font-family: $Aboreto;
+    letter-spacing: 0.7px;
+    transition: 0.3s;
+ 
+    @media #{$medium-up} {
+        padding: 12px 18px;
+        font-size: 1.25rem;
+    }
+}
