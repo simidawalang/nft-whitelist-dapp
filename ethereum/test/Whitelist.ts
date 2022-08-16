@@ -14,6 +14,6 @@ describe("Whitelist contract", () => {
     await whitelist.deployed();
 
     await whitelist.addAddressToWhitelist();
-    await expect(await whitelist.numAddresseWhitelisted()).to.equal(1);
+    await expect(await whitelist.numAddressesWhitelisted()).to.equal(1);
   });
 });

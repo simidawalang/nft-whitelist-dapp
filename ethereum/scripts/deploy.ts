@@ -10,6 +10,8 @@ const deploy = async () => {
     "Whitelist contrsct deployed to:",
     deployedWhitelistContract.address
   );
+
+  // 0xD885FA1f0701C1cB141A5F5631583D028b4C051f
 };
 
 deploy()
