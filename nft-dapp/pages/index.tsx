@@ -102,7 +102,7 @@ const Home: NextPage = () => {
 
     if (accounts.length > 0) {
       setDefaultAccount(accounts[0]);
-      checkIfWhitelisted();
+      await checkIfWhitelisted();
     } else {
       setDefaultAccount("");
       setIsConnected(false);
