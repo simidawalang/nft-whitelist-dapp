@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [numWhitelisted, setNumWhitelisted] = useState(0);
   const [isWhitelisted, setIsWhitelisted] = useState(false);
-
+  const [networkChainId, setNetworkChainId] = useState(0);
   const getNumberOfWhitelistedAddresses = async () => {
     try {
       if (window.ethereum) {
@@ -31,23 +31,22 @@ const Home: NextPage = () => {
 
   const checkIfWhitelisted = async () => {
     try {
-      if(window.ethereum) {
+      if (window.ethereum) {
         const provider = new providers.Web3Provider(window?.ethereum);
 
         const accounts = await provider.send("eth_requestAccounts", []);
-  
+
         const whitelistContract = new Contract(
           WHITELIST_CONTRACT_ADDRESS,
           ABI,
           provider
         );
-  
+
         setIsWhitelisted(
           await whitelistContract.whitelistedAddress(accounts[0])
         );
       }
-  
-    } catch(e: any) {
+    } catch (e: any) {
       console.error(e.message);
     }
   };
@@ -55,18 +54,16 @@ const Home: NextPage = () => {
   const checkIfConnected = async () => {
     try {
       if (window.ethereum) {
-      
-      const provider = new providers.Web3Provider(window?.ethereum);
+        const provider = new providers.Web3Provider(window?.ethereum);
 
-      const accounts = await provider.listAccounts();
+        const accounts = await provider.listAccounts();
 
-      if (accounts.length > 0) {
-        setDefaultAccount(accounts[0]);
-        setIsConnected(true);
-        await getNumberOfWhitelistedAddresses();
-
-        
-      }} else {
+        if (accounts.length > 0) {
+          setDefaultAccount(accounts[0]);
+          setIsConnected(true);
+          await getNumberOfWhitelistedAddresses();
+        }
+      } else {
         setIsConnected(false);
         setDefaultAccount("");
       }
@@ -131,7 +128,6 @@ const Home: NextPage = () => {
     checkIfConnected();
     checkIfWhitelisted();
     getNumberOfWhitelistedAddresses();
-
   }, []);
 
   useEffect(() => {
@@ -152,30 +148,32 @@ const Home: NextPage = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <p> {defaultAccount}</p>
+      
       <main className="homepage homepage-header container">
-        <div className="intro">
-          <h1 className="brand-text">ORISA</h1>
-          <p>NFT collection for fans of Yoruba mythology</p>
-          {!isConnected ? (
-            <Button content="Connect Wallet" onClick={connectWallet} />
-          ) : (
-            !isWhitelisted && (
-              <Button
-                content="Join Whitelist"
-                onClick={addAddressToWhitelist}
-              />
-            )
-          )}
-          {numWhitelisted !== 0 && (
-            <p>
-              {numWhitelisted} have been whitelisted
+      <p className="default-account"> {defaultAccount}</p>
+        <div className="main-content">
+          <div className="intro">
+            <h1 className="brand-text">ORISA</h1>
+            <p>NFT collection for fans of Yoruba mythology</p>
+            {!isConnected ? (
+              <Button content="Connect Wallet" onClick={connectWallet} />
+            ) : (
+              !isWhitelisted && (
+                <Button
+                  content="Join Whitelist"
+                  onClick={addAddressToWhitelist}
+                />
+              )
+            )}
+            <p className="num-whitelisted">
+              {numWhitelisted !== 0 &&
+                `${numWhitelisted} have been whitelisted`}
               {isWhitelisted && <span>, including you!</span>}
             </p>
-          )}
-        </div>
-        <div>
-          <Carousel />
+          </div>
+          <div>
+            <Carousel />
+          </div>
         </div>
       </main>
     </div>
