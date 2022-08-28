@@ -8,7 +8,9 @@
     font-family: $Aboreto;
     letter-spacing: 0.7px;
     transition: 0.3s;
- 
+    &:hover {
+        cursor: pointer;
+    }
     @media #{$large-up} {
         padding: 12px 18px;
         font-size: 1.25rem;
